@@ -11,3 +11,12 @@ Rate limiting in Istio helps control the number of requests sent to a service to
 ## Deploy
 
 This configuration can be deployed as is with [FluxCD example](https://github.com/brainfair/awesome-flux-head/blob/main/clusters/homelab/02-istio-ratelimits.yaml) or just with kubectl (make sure that you replaced subdomain placeholders before).
+
+## Run Tests
+Tests are provided using the k6 framework in the ```test.js``` files located inside each example directory. The tests target the configured rate-limited path (```/headers```) and validate the ```custom-header``` value.
+
+You can run the tests using the Makefile commands inside each directory example:
+```
+make test111  # Runs the test with custom-header set to 111
+make test222  # Runs the test with custom-header set to 222
+```
