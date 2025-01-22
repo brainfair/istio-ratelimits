@@ -38,10 +38,6 @@ spec:
         value:
           route:
             rate_limits:
-              # - actions:
-              #     - request_headers:
-              #         header_name: ":path"
-              #         descriptor_key: path
               - actions:
                   - header_value_match:
                       descriptor_value: "header_path"
