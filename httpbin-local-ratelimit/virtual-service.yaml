@@ -6,7 +6,7 @@ metadata:
   namespace: httpbin-local-ratelimit
 spec:
   gateways:
-    - httpbin-local-ratelimit/httpbin-local-ratelimit
+    - httpbin-local-ratelimit/httpbin-local-ratelimit-gateway
   hosts:
     - httpbin-local-ratelimit.${cluster_subdomain}
   http:
