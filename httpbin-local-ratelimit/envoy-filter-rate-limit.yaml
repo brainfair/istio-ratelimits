@@ -47,9 +47,10 @@ spec:
                           string_match:
                             prefix: /headers
                             ignore_case: true
-                  # - request_headers:
-                  #     header_name: custom-header
-                  #     descriptor_key: custom_header
+              - actions:
+                  - request_headers:
+                      header_name: custom-header
+                      descriptor_key: custom_header
           typed_per_filter_config:
             envoy.filters.http.local_ratelimit:
               "@type": type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
@@ -80,8 +81,9 @@ spec:
                 - entries:
                     - key: header_match
                       value: header_path
-                    # - key: custom-header
-                    #   value: "111"
+                - entries:
+                    - key: custom-header
+                      value: "111"
                   token_bucket:
                     max_tokens: 2
                     tokens_per_fill: 2
