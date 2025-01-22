@@ -5,5 +5,9 @@ This repository demonstrates two approaches to implementing rate limiting in Ist
 ## Overview
 
 Rate limiting in Istio helps control the number of requests sent to a service to prevent overloading and ensure fair usage. The two approaches covered in this repository are:
-- Local Rate Limiting: Enforces rate limits at the sidecar proxy level, where each instance of a service independently applies the configured limits.
-- Global Rate Limiting: Enforces rate limits across all instances on a Gateway level of a service using a centralized Redis-based rate-limiting mechanism.
+- **Local Rate Limiting**: Enforces rate limits at the sidecar proxy level, where each instance of a service independently applies the configured limits.
+- **Global Rate Limiting**: Enforces rate limits across all instances on a Gateway level of a service using a centralized Redis-based rate-limiting mechanism.
+
+## Deploy
+
+This configuration can be deployed as is with [FluxCD example](https://github.com/brainfair/awesome-flux-head/blob/main/clusters/homelab/02-istio-ratelimits.yaml) or just with kubectl (make sure that you replaced subdomain placeholders before).
