@@ -9,3 +9,5 @@ resources:
   ## Envoy ratelimit service deployment
   - rt-cm.yaml
   - rt-service.yaml
+  ## Enable Gateway filter chain for global rate limit service
+  - rt-global-enable.yaml
