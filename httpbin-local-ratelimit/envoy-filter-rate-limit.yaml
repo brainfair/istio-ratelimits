@@ -47,7 +47,6 @@ spec:
                           string_match:
                             prefix: /headers
                             ignore_case: true
-              - actions:
                   - request_headers:
                       header_name: custom-header
                       descriptor_key: custom_header
@@ -81,7 +80,6 @@ spec:
                 - entries:
                     - key: header_match
                       value: header_path
-                - entries:
                     - key: custom-header
                       value: "111"
                   token_bucket:
