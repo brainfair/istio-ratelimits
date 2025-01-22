@@ -1,0 +1,26 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: httpbin-local-ratelimit-gateway
+  namespace: httpbin-local-ratelimit
+spec:
+  selector:
+    istio: ingress-private
+  servers:
+    - hosts:
+        - httpbin-local-ratelimit.${cluster_subdomain}
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+      tls:
+        httpsRedirect: true
+    - hosts:
+        - httpbin-local-ratelimit.${cluster_subdomain}
+      port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: localhost-direct
+        mode: SIMPLE
