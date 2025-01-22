@@ -6,7 +6,7 @@ metadata:
   namespace: httpbin-local-ratelimit
 spec:
   gateways:
-    - istio-ingress/httpbin-local-ratelimit
+    - httpbin-local-ratelimit/httpbin-local-ratelimit
   hosts:
     - httpbin-local-ratelimit.${cluster_subdomain}
   http:
