@@ -11,7 +11,7 @@ metadata:
   namespace: httpbin-local-ratelimit
   labels:
     app: httpbin
-    service: httpbin
+    service: httpbin-local-ratelimit
 spec:
   ports:
     - name: http
