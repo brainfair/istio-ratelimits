@@ -4,7 +4,7 @@ import { check } from 'k6';
 import { Counter } from 'k6/metrics';
 
 export const options = {
-  vus: 5,
+  vus: 1,
   duration: '10s',
   insecureSkipTLSVerify: true,
 };
@@ -38,7 +38,7 @@ export default function () {
     failureCount.add(1); // Increment failure counter
   }
 
-  sleep(1);
+  sleep(0.5);
 }
 
 export function handleSummary(data) {
