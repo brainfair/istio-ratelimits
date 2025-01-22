@@ -80,7 +80,7 @@ spec:
                 - entries:
                     - key: header_match
                       value: header_path
-                    - key: custom-header
+                    - key: custom_header
                       value: "111"
                   token_bucket:
                     max_tokens: 2
