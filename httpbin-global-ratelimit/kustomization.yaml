@@ -6,5 +6,3 @@ resources:
   - httpbin.yaml
   - virtual-service.yaml
   - gateway.yaml
-  ## EnvoyFilter with local rate limit configuration
-  - envoy-filter-rate-limit.yaml

@@ -1,0 +1,17 @@
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: httpbin-global-ratelimit-virtualservice
+  namespace: httpbin-global-ratelimit
+spec:
+  gateways:
+    - httpbin-global-ratelimit/httpbin-global-ratelimit-gateway
+  hosts:
+    - httpbin-global-ratelimit.${cluster_subdomain}
+  http:
+    - route:
+        - destination:
+            host: httpbin.httpbin-global-ratelimit.svc.cluster.local
+            port:
+              number: 8000
