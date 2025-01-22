@@ -10,7 +10,7 @@ data:
       - key: PATH
         value: "/headers"
         descriptors:
-          - key: custom-header
+          - key: custom_header
             value: "*"
             rate_limit:
               unit: minute

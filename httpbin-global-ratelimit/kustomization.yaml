@@ -11,3 +11,4 @@ resources:
   - rt-service.yaml
   ## Enable Gateway filter chain for global rate limit service
   - rt-global-enable.yaml
+  - rt-httpbin-rate-limit.yaml
