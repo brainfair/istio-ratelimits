@@ -5,3 +5,4 @@ resources:
   - httpbin.yaml
   - virtual-service.yaml
   - gateway.yaml
+  - envoy-filter-rate-limit.yaml

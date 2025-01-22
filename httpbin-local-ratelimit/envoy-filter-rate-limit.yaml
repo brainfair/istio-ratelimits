@@ -1,0 +1,92 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: filter-local-ratelimit-svc
+  namespace: httpbin-local-ratelimit
+spec:
+  workloadSelector:
+    labels:
+      app: httpbin
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_INBOUND
+        listener:
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          name: envoy.filters.http.local_ratelimit
+          typed_config:
+            "@type": type.googleapis.com/udpa.type.v1.TypedStruct
+            type_url: type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+            value:
+              stat_prefix: http_local_rate_limiter
+    - applyTo: HTTP_ROUTE
+      match:
+        context: SIDECAR_INBOUND
+        routeConfiguration:
+          vhost:
+            name: "inbound|http|8000"
+            route:
+              action: ROUTE
+      patch:
+        operation: MERGE
+        # Applies the rate limit rules.
+        value:
+          route:
+            rate_limits:
+              # - actions:
+              #     - request_headers:
+              #         header_name: ":path"
+              #         descriptor_key: path
+              - actions:
+                  - header_value_match:
+                      descriptor_value: "header_path"
+                      expect_match: true
+                      headers:
+                        - name: :path
+                          string_match:
+                            prefix: /headers
+                            ignore_case: true
+                  # - request_headers:
+                  #     header_name: custom-header
+                  #     descriptor_key: custom_header
+          typed_per_filter_config:
+            envoy.filters.http.local_ratelimit:
+              "@type": type.googleapis.com/envoy.extensions.filters.http.local_ratelimit.v3.LocalRateLimit
+              stat_prefix: http
+              # global token_bucket settings, all routes contribute to consume this quota.
+              token_bucket:
+                max_tokens: 2147483647
+                tokens_per_fill: 2147483647
+                fill_interval: 10s
+              # This adds the ability to see headers for how many tokens are left in the bucket, how often the bucket refills, and what is the token bucket max.
+              enable_x_ratelimit_headers: DRAFT_VERSION_03
+              filter_enabled:
+                runtime_key: http_local_rate_limiter
+                default_value:
+                  numerator: 100
+                  denominator: HUNDRED
+              filter_enforced:
+                runtime_key: http_local_rate_limiter
+                default_value:
+                  numerator: 100
+                  denominator: HUNDRED
+              response_headers_to_add:
+                - append: false
+                  header:
+                    key: x-local-rate-limit
+                    value: "true"
+              descriptors:
+                - entries:
+                    - key: header_match
+                      value: header_path
+                    # - key: custom-header
+                    #   value: "111"
+                  token_bucket:
+                    max_tokens: 2
+                    tokens_per_fill: 2
+                    fill_interval: 10s
