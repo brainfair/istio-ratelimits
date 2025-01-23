@@ -35,8 +35,8 @@ spec:
                       descriptor_key: custom_header
               - actions:
                   - metadata:
-                      descriptor_key: TEST
+                      descriptor_key: DESCRIPTOR_TEST
                       metadata_key:
                         key: envoy.lb
                         path:
-                          - key: TEST
+                          - key: COOKIE_TEST

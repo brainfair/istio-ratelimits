@@ -59,7 +59,7 @@ spec:
               - cookie: TEST
                 on_header_present:
                   metadata_namespace: envoy.lb
-                  key: TEST
+                  key: COOKIE_TEST
                   type: STRING
                 ## Optional if you want to set metadata when cookie is missing
                 # on_header_missing:
