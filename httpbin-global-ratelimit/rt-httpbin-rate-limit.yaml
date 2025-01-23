@@ -33,3 +33,10 @@ spec:
                   - request_headers:
                       header_name: custom-header
                       descriptor_key: custom_header
+              - action:
+                  - metadata:
+                      descriptor_key: COOKIE_K1
+                      metadata_key:
+                        key: envoy.lb
+                        path:
+                          - key: k1
