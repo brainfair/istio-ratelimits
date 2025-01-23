@@ -61,3 +61,8 @@ spec:
                   metadata_namespace: envoy.lb
                   key: TEST
                   type: STRING
+                on_header_missing:
+                  metadata_namespace: envoy.lb
+                  key: TEST
+                  value: "NO"
+                  type: STRING
