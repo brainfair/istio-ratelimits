@@ -5,3 +5,6 @@ test111:
 
 test222:
 	k6 run --env CUSTOM_HEADER=222 test.js
+
+test-cookie:
+	k6 run test-cookie.js

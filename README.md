@@ -17,6 +17,10 @@ Tests are provided using the k6 framework in the ```test.js``` files located ins
 
 You can run the tests using the Makefile commands inside each directory example:
 ```
+## Common tests with rate limiter per path and header value
 make test111  # Runs the test with custom-header set to 111
 make test222  # Runs the test with custom-header set to 222
+
+## Global rate limit test per cookie rate limiter
+make test-cookie
 ```
