@@ -37,3 +37,27 @@ spec:
                   cluster_name: outbound|8081||ratelimit.httpbin-global-ratelimit.svc.cluster.local
                   authority: ratelimit.httpbin-global-ratelimit.svc.cluster.local
               transport_api_version: V3
+    # The Envoy config you want to modify
+    - applyTo: HTTP_FILTER
+      match:
+        context: GATEWAY
+        listener:
+          filterChain:
+            sni: "httpbin-global-ratelimit.${cluster_subdomain}"
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+              subFilter:
+                name: "envoy.filters.http.router"
+      patch:
+        operation: INSERT_BEFORE
+        # Adds the Envoy Header to Metadata Filter in HTTP filter chain.
+        value:
+          name: envoy.filters.header_metadata
+          typed_config:
+            "@type": type.googleapis.com/envoy.extensions.filters.http.header_to_metadata.v3.Config
+            request_rules:
+              - cookie: k1
+                on_header_present:
+                  metadata_namespace: envoy.lb
+                  key: k1
+                  type: STRING
