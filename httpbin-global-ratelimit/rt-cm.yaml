@@ -15,7 +15,7 @@ data:
             rate_limit:
               unit: minute
               requests_per_unit: 10
-      - key: COOKIE_K1
+      - key: TEST
         value: "*"
         rate_limit:
           unit: minute

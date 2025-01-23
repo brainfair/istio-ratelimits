@@ -56,8 +56,8 @@ spec:
           typed_config:
             "@type": type.googleapis.com/envoy.extensions.filters.http.header_to_metadata.v3.Config
             request_rules:
-              - cookie: k1
+              - cookie: TEST
                 on_header_present:
                   metadata_namespace: envoy.lb
-                  key: k1
+                  key: TEST
                   type: STRING
