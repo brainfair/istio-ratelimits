@@ -14,7 +14,7 @@
         "\\.yaml$"
       ],
       "matchStrings": [
-        "image:\\s*\"?(?<depName>[\\w./-]+):(?<currentValue>[\\w-]+)\"?"
+        "image:\\s*(?:\"|')?(?<depName>envoyproxy/ratelimit):(?<currentValue>[\\w-]+)(?:\"|')?"
       ],
       "datasourceTemplate": "docker"
     }
