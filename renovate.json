@@ -18,7 +18,7 @@
         "image: (?<depName>envoyproxy\\/ratelimit):(?<currentValue>[a-f0-9]+)"
       ],
       "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
+      "versioningTemplate": "loose"
     }
   ],
   "packageRules": [
@@ -29,7 +29,7 @@
       "matchPackageNames": [
         "envoyproxy/ratelimit"
       ],
-      "versioning": "docker"
+      "versioning": "loose"
     }
   ]
 }
