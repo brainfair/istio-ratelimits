@@ -7,5 +7,30 @@
     "fileMatch": [
       "\\.yaml$"
     ]
+  },
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "\\.yaml$"
+      ],
+      "matchStrings": [
+        "image:\\s*\"?(?<depName>[\\w./-]+):(?<currentValue>[\\w-]+)\"?"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "envoyproxy/ratelimit"
+      ],
+      "versioning": "docker"
+    }
+  ],
+  "docker": {
+    "pinDigests": true
   }
 }
