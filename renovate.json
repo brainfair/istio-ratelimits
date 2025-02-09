@@ -8,8 +8,9 @@
       "\\.yaml$"
     ]
   },
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": [
         "\\.yaml$"
       ],
@@ -21,6 +22,12 @@
   ],
   "packageRules": [
     {
+      "matchCategories": [
+        "docker"
+      ],
+      "pinDigests": true
+    },
+    {
       "matchDatasources": [
         "docker"
       ],
@@ -29,8 +36,5 @@
       ],
       "versioning": "docker"
     }
-  ],
-  "docker": {
-    "pinDigests": true
-  }
+  ]
 }
