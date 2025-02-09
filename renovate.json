@@ -7,29 +7,5 @@
     "fileMatch": [
       "\\.yaml$"
     ]
-  },
-  "customManagers": [
-    {
-      "customType": "regex",
-      "fileMatch": [
-        "\\.yaml$"
-      ],
-      "matchStrings": [
-        "image: (?<depName>envoyproxy\/ratelimit):(?<currentValue>[a-f0-9]+)"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "loose"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackageNames": [
-        "envoyproxy/ratelimit"
-      ],
-      "versioning": "loose"
-    }
-  ]
+  }
 }
