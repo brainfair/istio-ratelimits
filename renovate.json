@@ -15,18 +15,13 @@
         "\\.yaml$"
       ],
       "matchStrings": [
-        "image:\\s*(?:\"|')?(?<depName>envoyproxy/ratelimit):(?<currentValue>[\\w-]+)(?:\"|')?"
+        "image: (?<depName>envoyproxy\\/ratelimit):(?<currentValue>[a-f0-9]+)"
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
     }
   ],
   "packageRules": [
-    {
-      "matchCategories": [
-        "docker"
-      ],
-      "pinDigests": true
-    },
     {
       "matchDatasources": [
         "docker"
