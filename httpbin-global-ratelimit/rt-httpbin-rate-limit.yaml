@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: httpbin-global-ratelimit-route
+  name: httpbin-global-ratelimit-mtls-route
   namespace: istio-ingress
 spec:
   workloadSelector:
