@@ -24,3 +24,12 @@ spec:
       tls:
         credentialName: localhost-direct
         mode: SIMPLE
+    - hosts:
+        - httpbin-global-ratelimit-mtls.${cluster_subdomain}
+      port:
+        name: https
+        number: 443
+        protocol: HTTPS
+      tls:
+        credentialName: localhost-direct
+        mode: SIMPLE

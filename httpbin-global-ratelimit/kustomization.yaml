@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - httpbin.yaml
   - virtual-service.yaml
+  - virtual-service-mtls.yaml
   - gateway.yaml
   ## Envoy ratelimit service deployment
   - rt-cm.yaml
