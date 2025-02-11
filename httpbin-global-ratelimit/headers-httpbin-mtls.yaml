@@ -24,13 +24,17 @@ spec:
           name: envoy.filters.http.lua
           typed_config:
             "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
+            # https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/lua_filter.html#ssl-connection-object-api
             inlineCode: |
               function envoy_on_request(request_handle)
                 local connection = request_handle:connection()
                 if (connection:ssl() ~= nil and connection:ssl():peerCertificateValidated()) then
+                  local local parsedSubject = connection:ssl():parsedSubjectPeerCertificate()
                   request_handle:headers():add("CLIENT_VERIFIED", "SUCCESS")
                   request_handle:headers():add("CLIENT_SUBJECT_DN", connection:ssl():subjectPeerCertificate())
                   request_handle:headers():add("CLIENT_ISSUER_DN", connection:ssl():issuerPeerCertificate())
                   request_handle:headers():add("CLIENT_CERTIFICATE", connection:ssl():urlEncodedPemEncodedPeerCertificate())
+                  request_handle:headers():add("CLIENT_CN", parsedSubject:commonName())
+                  request_handle:headers():add("CLIENT_O", table.concat(parsedSubject:organizationName(), ","))
                 end
               end
