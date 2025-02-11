@@ -32,4 +32,4 @@ spec:
         protocol: HTTPS
       tls:
         credentialName: localhost-direct
-        mode: SIMPLE
+        mode: OPTIONAL_MUTUAL
