@@ -33,7 +33,9 @@ spec:
                   request_handle:headers():add("CLIENT_SUBJECT_DN", connection:ssl():subjectPeerCertificate())
                   request_handle:headers():add("CLIENT_ISSUER_DN", connection:ssl():issuerPeerCertificate())
                   request_handle:headers():add("CLIENT_CERTIFICATE", connection:ssl():urlEncodedPemEncodedPeerCertificate())
+                  -- [[ currently not supported by Istio since parsedSubjectPeerCertificate() is introduced in Envoy 1.33.0, I guess istio 1.25 will support this
                   request_handle:headers():add("CLIENT_CN", connection:ssl():parsedSubjectPeerCertificate():commonName())
                   request_handle:headers():add("CLIENT_O", connection:ssl():parsedSubjectPeerCertificate():organizationName())
+                  ]]
                 end
               end
