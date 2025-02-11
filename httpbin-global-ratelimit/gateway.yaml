@@ -27,7 +27,7 @@ spec:
     - hosts:
         - httpbin-global-ratelimit-mtls.${cluster_subdomain}
       port:
-        name: https
+        name: https-mtls
         number: 443
         protocol: HTTPS
       tls:
