@@ -13,3 +13,5 @@ resources:
   ## Enable Gateway filter chain for global rate limit service
   - rt-global-enable.yaml
   - rt-httpbin-rate-limit.yaml
+  ## Enable extra headers for mTLS
+  - headers-httpbin-mtls.yaml
