@@ -8,3 +8,6 @@ test222:
 
 test-cookie:
 	k6 run test-cookie.js
+
+test-mtls:
+	k6 run test-mtls.js
