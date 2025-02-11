@@ -15,6 +15,11 @@ data:
             rate_limit:
               unit: minute
               requests_per_unit: 10
+          - key: client_cert_header
+            value: "*"
+            rate_limit:
+              unit: minute
+              requests_per_unit: 10
       - key: DESCRIPTOR_TEST
         value: "*"
         rate_limit:
