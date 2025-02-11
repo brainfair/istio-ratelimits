@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: httpbin-global-ratelimit-virtualservice
+  name: httpbin-global-ratelimit-mtls-virtualservice
   namespace: httpbin-global-ratelimit
 spec:
   gateways:
