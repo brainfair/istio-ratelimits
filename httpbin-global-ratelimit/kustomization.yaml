@@ -14,5 +14,5 @@ resources:
   - rt-global-enable.yaml
   - rt-httpbin-rate-limit.yaml
   ## Enable extra headers for mTLS and enable rate limit for mTLS
-  #- headers-httpbin-mtls.yaml
-  #- rt-httpbin-rate-limit-mtls.yaml
+  - headers-httpbin-mtls.yaml
+  - rt-httpbin-rate-limit-mtls.yaml
